@@ -6,7 +6,7 @@ import type {
   ShippingAddress,
 } from "./types";
 
-const MCP_URL = process.env.NEXT_PUBLIC_MCP_URL || "http://localhost:9000/mcp/mcp";
+const MCP_URL = "https://senectus-ai.medusajs.app/mcp/mcp";
 
 let requestIdCounter = 0;
 
@@ -36,15 +36,15 @@ async function mcpRequest<T>(
   });
 
   if (!response.ok) {
-    throw new Error(`MCP request failed: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `MCP request failed: ${response.status} ${response.statusText}`
+    );
   }
 
   const mcpResponse: MCPResponse<T> = await response.json();
 
   // Parse the JSON from result.content[0].text
-  if (
-    !mcpResponse.result?.content?.[0]?.text
-  ) {
+  if (!mcpResponse.result?.content?.[0]?.text) {
     throw new Error("Invalid MCP response format");
   }
 
@@ -55,7 +55,10 @@ async function mcpRequest<T>(
 /**
  * List carts for a specific user email
  */
-export async function listUserCarts(email: string, limit = 100): Promise<ListUserCartsResponse> {
+export async function listUserCarts(
+  email: string,
+  limit = 100
+): Promise<ListUserCartsResponse> {
   return mcpRequest<ListUserCartsResponse>("list_user_carts", {
     email,
     limit,
@@ -81,7 +84,9 @@ export async function createOrder(
  * Delete a cart (Reject action)
  * Note: Assumes delete_cart MCP tool exists
  */
-export async function deleteCart(cartId: string): Promise<{ success: boolean; message: string }> {
+export async function deleteCart(
+  cartId: string
+): Promise<{ success: boolean; message: string }> {
   return mcpRequest<{ success: boolean; message: string }>("delete_cart", {
     cart_id: cartId,
   });
