@@ -11,11 +11,6 @@ const navItems = [
     href: "/orders",
     icon: ShoppingCart,
   },
-  {
-    title: "Senior",
-    href: "/senior",
-    icon: Phone,
-  },
 ];
 
 export function DashboardSidebar() {
