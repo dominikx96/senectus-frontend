@@ -14,7 +14,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CartItem } from "@/components/cart-item";
 import { Check, X, Loader2, ShoppingCart } from "lucide-react";
-import Script from "next/script";
+import { ElevenLabsWidget } from "@/components/elevenlabs-widget";
 
 const SENIOR_EMAIL = process.env.NEXT_PUBLIC_SENIOR_EMAIL || "senior@example.com";
 
@@ -82,11 +82,7 @@ export default function OrdersPage() {
             <span>Loading orders...</span>
           </div>
         </div>
-        <elevenlabs-convai agent-id="agent_9601k7vd7n5sej8rmxgjf1rk91fc"></elevenlabs-convai>
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-        />
+        <ElevenLabsWidget />
       </>
     );
   }
@@ -107,11 +103,7 @@ export default function OrdersPage() {
             </div>
           </Card>
         </div>
-        <elevenlabs-convai agent-id="agent_9601k7vd7n5sej8rmxgjf1rk91fc"></elevenlabs-convai>
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-        />
+        <ElevenLabsWidget />
       </>
     );
   }
@@ -134,11 +126,7 @@ export default function OrdersPage() {
             </div>
           </Card>
         </div>
-        <elevenlabs-convai agent-id="agent_9601k7vd7n5sej8rmxgjf1rk91fc"></elevenlabs-convai>
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-        />
+        <ElevenLabsWidget />
       </>
     );
   }
@@ -248,11 +236,7 @@ export default function OrdersPage() {
       </div>
 
       {/* ElevenLabs Conversational AI Widget */}
-      <elevenlabs-convai agent-id="agent_9601k7vd7n5sej8rmxgjf1rk91fc"></elevenlabs-convai>
-      <Script
-        src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-        strategy="afterInteractive"
-      />
+      <ElevenLabsWidget />
     </>
   );
 }
